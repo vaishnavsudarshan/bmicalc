@@ -1,0 +1,39 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython.min.js"/>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython_stdlib.min.js"/>
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body onload="brython()">
+        <script type="text/python">
+    from browser import document
+    from browser.widgets.dialog import InfoDialog
+    import bmicalc.bmitables
+    
+    def click(ev):
+        InfoDialog("Hello", f"Hello, {document['zone'].value} !")
+    
+    # bind event 'click' on button to function echo
+    document["echo"].bind("click", click)</script>
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon">Age (years)</span>
+            <input id="age" type="range" class="form-control" name="age" min=2 max=20 step=0.5>
+            <output id="ageval" for="age" value="10"></output>
+            <span class="input-group-addon">Weight (lb)</span>
+            <input id="weight" type="range" class="form-control" name="weight" min=2 max=20 step=0.5>
+            <span class="input-group-addon">Height (inches)</span>
+            <input id="height" type="range" class="form-control" name="height" min=2 max=20 step=0.5>
+        </div>
+            <input id="zone">
+            <button id="echo">click !</button>
+    </div>
+    
+    </body>
+    
+    </html>
