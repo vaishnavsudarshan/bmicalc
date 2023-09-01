@@ -5,9 +5,9 @@
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython_stdlib.min.js"/>
         </script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     </head>
     <body onload="brython()">
         <script type="text/python">
@@ -20,16 +20,32 @@
     
     # bind event 'click' on button to function echo
     document["echo"].bind("click", click)</script>
-    <div class="container">
-        <div class="input-group">
-            <span class="input-group-addon">Age (years)</span>
-            <input id="age" type="range" class="form-control" name="age" min=2 max=20 step=0.5>
-            <output id="ageval" for="age" value="10"></output>
-            <span class="input-group-addon">Weight (lb)</span>
-            <input id="weight" type="range" class="form-control" name="weight" min=2 max=20 step=0.5>
-            <span class="input-group-addon">Height (inches)</span>
-            <input id="height" type="range" class="form-control" name="height" min=2 max=20 step=0.5>
-        </div>
+    
+    <div class="container w-50">
+          
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="label-age">Age (months)</span>
+            </div>
+            <input type="number" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large" aria-describedby="label-age">
+          </div>
+
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="label-weight">Weight (lb)  </span>
+            </div>
+            <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large" aria-describedby="label-weight">
+          </div>
+
+          <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="label-heightt">Height (in)  </span>
+            </div>
+            <input id=height type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large" aria-describedby="label-height">
+          </div>
+  
+        
+        
             <input id="zone">
             <button id="echo">click !</button>
     </div>
