@@ -1,11 +1,12 @@
 """
 Main BMI calculation functions
 """
+import random
 def calc_bmi(weight, height):
     '''
     Calculate BMI given weight and height
     '''
-    return 20
+    return random.randint(1, 40)
 
 def calc_weight(bmi, height):
     '''
@@ -17,4 +18,4 @@ def calc_percentile(bmi, gender, age):
     '''
     Calculate percentile given BMI, Gender and age
     '''
-    return 70
+    return random.randint(1, 99)

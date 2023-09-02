@@ -8,24 +8,24 @@
   </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 </head>
 
 <body onload="brython()">
   <script type="text/python">
     from browser import document
-    from browser.widgets.dialog import InfoDialog
-    import bmicalc.bmitables
-    
-    def click(ev):
-        InfoDialog("Hello", f"Hello, {document['zone'].value} !")
+    import bmicalc.controller as controller 
     
     # bind event 'click' on button to function echo
-    document["echo"].bind("click", click)
+    document["weight"].bind("change", controller.update_bmi)
+    document["age"].bind("change", controller.update_bmi)
+    document["gender"].bind("change", controller.update_bmi)
+    document["height"].bind("change", controller.update_bmi)
+    document["bmi"].bind("change", controller.update_weight_from_bmi)
   </script>
   <h1>BMI Calculator for kids</h1>
   <div class="container w-25">
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="gender">Gender</label>
       </div>
@@ -35,15 +35,15 @@
       </select>
     </div>
 
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-age">Age (months)</span>
       </div>
-      <input type="number" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large"
+      <input type="number" id="age" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large"
         aria-describedby="label-age">
     </div>
 
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-weight">Weight (lb) </span>
       </div>
@@ -51,7 +51,7 @@
         aria-describedby="label-weight">
     </div>
 
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-height">Height (in) </span>
       </div>
@@ -59,7 +59,7 @@
         aria-describedby="label-height">
     </div>
 
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-bmi">BMI </span>
       </div>
@@ -67,19 +67,14 @@
         aria-describedby="label-bmi">
     </div>
 
-    <div class="input-group input-group-lg mb-3">
+    <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-bmi-percentile">BMI Percentile </span>
       </div>
       <input id=bmi-percentile type="number" min="1" max="99" value="50" class="form-control" aria-label="Large"
         aria-describedby="label-bmi-percentile">
     </div>
-
-
-
-    <input id="zone">
-    <button id="echo">click !</button>
-  </div>
+</div>
 
 </body>
 

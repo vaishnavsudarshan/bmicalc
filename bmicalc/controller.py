@@ -6,7 +6,7 @@ import bmicalc.bmicalc
 
 
 
-def update_bmi_weight(_):
+def update_bmi(_):
     '''
     Update BMI and BMI percentile when weight changes
     '''
@@ -17,7 +17,7 @@ def update_bmi_weight(_):
     bmi = bmicalc.bmicalc.calc_bmi(weight, height)
     bmi_percentile = bmicalc.bmicalc.calc_percentile(bmi, gender, age)
     document['bmi'].value = bmi
-    document['bmi_percentile'].value = bmi_percentile
+    document['bmi-percentile'].value = bmi_percentile
 
 
 def update_weight_from_bmi(_):
