@@ -1,16 +1,18 @@
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython.min.js"/>
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython_stdlib.min.js"/>
-        </script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    </head>
-    <body onload="brython()">
-        <script type="text/python">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython.min.js" />
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.2/brython_stdlib.min.js" />
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="brython()">
+  <script type="text/python">
     from browser import document
     from browser.widgets.dialog import InfoDialog
     import bmicalc.bmitables
@@ -19,37 +21,66 @@
         InfoDialog("Hello", f"Hello, {document['zone'].value} !")
     
     # bind event 'click' on button to function echo
-    document["echo"].bind("click", click)</script>
-    
-    <div class="container w-50">
-          
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="label-age">Age (months)</span>
-            </div>
-            <input type="number" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large" aria-describedby="label-age">
-          </div>
-
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="label-weight">Weight (lb)  </span>
-            </div>
-            <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large" aria-describedby="label-weight">
-          </div>
-
-          <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="label-heightt">Height (in)  </span>
-            </div>
-            <input id=height type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large" aria-describedby="label-height">
-          </div>
-  
-        
-        
-            <input id="zone">
-            <button id="echo">click !</button>
+    document["echo"].bind("click", click)
+  </script>
+  <h1>BMI Calculator for kids</h1>
+  <div class="container w-25">
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="gender">Gender</label>
+      </div>
+      <select class="custom-select" id="gender" aria-label="Large">
+        <option aria-label="Large" selected value="boy">Boy</option>
+        <option aria-label="Large" value="girl">Girl</option>
+      </select>
     </div>
-    
-    </body>
-    
-    </html>
+
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-age">Age (months)</span>
+      </div>
+      <input type="number" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large"
+        aria-describedby="label-age">
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-weight">Weight (lb) </span>
+      </div>
+      <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
+        aria-describedby="label-weight">
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-height">Height (in) </span>
+      </div>
+      <input id=height type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
+        aria-describedby="label-height">
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-bmi">BMI </span>
+      </div>
+      <input id=bmi type="number" min="10" max="50" step="0.5" value="20" class="form-control" aria-label="Large"
+        aria-describedby="label-bmi">
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-bmi-percentile">BMI Percentile </span>
+      </div>
+      <input id=bmi-percentile type="number" min="1" max="99" value="50" class="form-control" aria-label="Large"
+        aria-describedby="label-bmi-percentile">
+    </div>
+
+
+
+    <input id="zone">
+    <button id="echo">click !</button>
+  </div>
+
+</body>
+
+</html>
