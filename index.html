@@ -22,6 +22,7 @@
     document["gender"].bind("change", controller.update_bmi)
     document["height"].bind("change", controller.update_bmi)
     document["bmi"].bind("change", controller.update_weight_from_bmi)
+    document["bmi-percentile"].bind("change", controller.update_weight_from_bmi_pct)
   </script>
   <h1>BMI Calculator for kids</h1>
   <div class="container w-25">

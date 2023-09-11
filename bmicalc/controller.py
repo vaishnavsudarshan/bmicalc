@@ -33,3 +33,17 @@ def update_weight_from_bmi(_):
     document['weight'].value = weight
     document['bmi-percentile'].value = bmi_percentile
 
+def update_weight_from_bmi_pct(_):
+    '''
+    Update weight when BMI changes
+    '''
+    gender =  document['gender'].value
+    age = float(document['age'].value)
+    height = float(document['height'].value)
+    bmi_percentile = float(document['bmi-percentile'].value)
+    
+    bmi = bmicalc.bmicalc.calc_bmi_from_percentile(gender, age, bmi_percentile)
+    weight = bmicalc.bmicalc.calc_weight(bmi, height)
+
+    document['weight'].value = weight
+    document['bmi'].value = bmi
