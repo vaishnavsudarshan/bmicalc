@@ -38,6 +38,23 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
+        <span class="input-group-text" id="label-age">Age</span>
+      </div>
+      <input type="number" id="age-years" min="2" max="20" step="0.5" value="12" class="form-control" aria-label="Large"
+        aria-describedby="label-age">
+      <span class="input-group-text">Years</span>
+      <input type="number" id="age-months" min="0" max="12" step="1" value="6" class="form-control">
+      <span class="input-group-text">months</span>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="label-weight">Weight</span>
+      </div>
+      <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
+        aria-describedby="label-weight">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
         <span class="input-group-text" id="label-age">Age (months)</span>
       </div>
       <input type="number" id="age" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large"
