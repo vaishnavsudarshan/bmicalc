@@ -1,17 +1,32 @@
+'''
+The model
+'''
+# pylint: disable-msg=C0103
+
 from .bmitables import percentiles, boys_percentiles, girls_percentiles
+
 def calc_bmi(weight, height):
+    '''
+    Calculate BMI given weight (lb) and height (inches)
+    '''
     x = height ** 2
     y = weight / x
     z = y * 703
     return z
 
 def calc_weight(bmi, height):
+    '''
+    Calculate weight (lb) given BMI and height (inches)
+    '''
     x = height ** 2
     y = bmi * x
     z = y / 703
     return z
 
 def calc_percentile(bmi, gender, age):
+    '''
+    Calculate percentile given BMI, Gender and Age (months)
+    '''
     if gender == "boy":
         table = boys_percentiles
     else:
@@ -33,6 +48,7 @@ def calc_percentile(bmi, gender, age):
 
 def calc_bmi_from_percentile(gender, age, percentile):
     '''
+    Calculate BMI given percentile, gender and age (months)
     '''
     if gender == "boy":
         table = boys_percentiles
@@ -50,6 +66,5 @@ def calc_bmi_from_percentile(gender, age, percentile):
     x1 = percentiles[i]
     x2 = percentiles[i+1]
     m = (y2-y1)/(x2-x1)
-    y = m*(percentile-x1)+y1   
+    y = m*(percentile-x1)+y1
     return y
-
