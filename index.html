@@ -17,15 +17,18 @@
     import bmicalc.controller as controller 
     
     # bind event 'click' on button to function echo
-    document["weight"].bind("change", controller.update_bmi)
-    document["age"].bind("change", controller.update_bmi)
+    document["weight-lb"].bind("change", controller.update_bmi)
+    document["weight-oz"].bind("change", controller.update_bmi)
+    document["age-years"].bind("change", controller.update_bmi)
+    document["age-months"].bind("change", controller.update_bmi)
     document["gender"].bind("change", controller.update_bmi)
-    document["height"].bind("change", controller.update_bmi)
+    document["height-ft"].bind("change", controller.update_bmi)
+    document["height-in"].bind("change", controller.update_bmi)
     document["bmi"].bind("change", controller.update_weight_from_bmi)
     document["bmi-percentile"].bind("change", controller.update_weight_from_bmi_pct)
   </script>
   <h1>BMI Calculator for kids</h1>
-  <div class="container w-25">
+  <div class="container w-50">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="gender">Gender</label>
@@ -40,41 +43,30 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="label-age">Age</span>
       </div>
-      <input type="number" id="age-years" min="2" max="20" step="0.5" value="12" class="form-control" aria-label="Large"
-        aria-describedby="label-age">
-      <span class="input-group-text">Years</span>
+      <input type="number" id="age-years" min="2" max="20" step="1" value="12" class="form-control">
+      <span class="input-group-text">years</span>
       <input type="number" id="age-months" min="0" max="12" step="1" value="6" class="form-control">
       <span class="input-group-text">months</span>
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="label-weight">Weight</span>
+        <span class="input-group-text">Weight</span>
       </div>
-      <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
-        aria-describedby="label-weight">
+      <input id="weight-lb" type="number" min="20" max="300" step="0.5" value="50" class="form-control">
+      <span class="input-group-text">lb</span>
+      <input id="weight-oz" type="number" min="20" max="300" step="0.5" value="50" class="form-control">
+      <span class="input-group-text">oz</span>
     </div>
+    
+    
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="label-age">Age (months)</span>
+        <span class="input-group-text" id="label-height">Height</span>
       </div>
-      <input type="number" id="age" min="24" max="240" step="0.5" value="48" class="form-control" aria-label="Large"
-        aria-describedby="label-age">
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="label-weight">Weight (lb) </span>
-      </div>
-      <input id=weight type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
-        aria-describedby="label-weight">
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="label-height">Height (in) </span>
-      </div>
-      <input id=height type="number" min="20" max="300" step="0.5" value="50" class="form-control" aria-label="Large"
-        aria-describedby="label-height">
+      <input id="height-ft" type="number" min="0" max="10" step=".5" value="5" class="form-control">
+      <span class="input-group-text">feet</span>
+      <input id="height-in" type="number" min="0" max="10" step=".5" value="5" class="form-control">
+      <span class="input-group-text">inches</span>
     </div>
 
     <div class="input-group mb-3">
