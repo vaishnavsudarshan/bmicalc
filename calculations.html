@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BMI Calculations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body>
+    <div class="container w-50">
+        <h1>How BMI is calculated</h1>
+        <p align="justify">
+            For all ages, the formula for BMI is simple.
+            $$
+            \Large{\text{BMI} = \frac{w}{h^2}}
+            $$
+            This is for when the mass in kilograms, and the height is in meters.
+        </p>
+        <p align="justify">
+            When the height is in feet and weight is in inches, the formula for BMI becomes:
+            $$
+            \Large{\text{BMI} = 703 \times \frac{w}{h^2}}
+            $$
+        </p>
+
+        <h1>How BMI Percentile is calculated</h1>
+        <p align="justify">
+            The way to find the BMI <i>percentile</i> for children and teens is a bit harder than the BMI itself because it depends on the distribution of BMI across the population of kids with a certain age, weight, height and gender. 
+        </p>
+        <p align="justify">
+            First, we obtained the <a href="https://www.cdc.gov/growthcharts/html_charts/bmiagerev.htm">growth
+                charts</a>
+            from the Center for Disease Control and Prevention (CDC).
+            These growth charts provide the BMI percentile based on the age and BMI, and there is a different chart for
+            each gender.
+        </p>
+
+        <p align="justify">
+            Next, we used a technique called <i>linear interpolation</i> to obtain the BMI percentile given the gender,
+            age and BMI.
+        </p>
+        <p align="justify">
+            If the BMI for a kid lies between two values \(\text{BMI}_{\text{low}}\) and \(\text{BMI}_{\text{high}}\) and we know the percentiles for these as \(p_{\text{low}}\) and \(p_{\text{high}}\), the percentile for a given BMI can be calculated as:
+            $$
+            p = \frac{p_{\text{high}}-p_{\text{low}}}{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}} \times \text{BMI}
+            $$
+        </p>
+        <h1>How weight is calculated given target BMI percentile</h1>
+        <h1>How this is implemented in this website</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
