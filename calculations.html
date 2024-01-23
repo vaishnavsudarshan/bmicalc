@@ -27,21 +27,37 @@
         <h1>How BMI is calculated</h1>
         <p align="justify">
             For all ages, the formula for BMI is simple.
-            $$
-            \Large{\text{BMI} = \frac{w}{h^2}}
-            $$
-            This is for when the mass in kilograms, and the height is in meters.
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    $$
+                    \Large{\text{BMI} = \frac{w_{kg}}{h_{m}^2}}
+                    $$
+                </p>
+            </div>
+        </div>
+
+        This is for when the mass in kilograms, and the height is in meters.
         </p>
         <p align="justify">
-            When the height is in feet and weight is in inches, the formula for BMI becomes:
-            $$
-            \Large{\text{BMI} = 703 \times \frac{w}{h^2}}
-            $$
+            When the height is in feet and weight is in pounds, the formula for BMI becomes:
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    $$
+                    \Large{\text{BMI} = 703 \times \frac{w_{lb}}{h_{in}^2}}
+                    $$
+                </p>
+            </div>
+        </div>
+
         </p>
 
         <h1>How BMI Percentile is calculated</h1>
         <p align="justify">
-            The way to find the BMI <i>percentile</i> for children and teens is a bit harder than the BMI itself because it depends on the distribution of BMI across the population of kids with a certain age, weight, height and gender. 
+            The way to find the BMI <i>percentile</i> for children and teens is a bit harder than the BMI itself because
+            it depends on the distribution of BMI across the population of kids with a certain age, weight, height and
+            gender.
         </p>
         <p align="justify">
             First, we obtained the <a href="https://www.cdc.gov/growthcharts/html_charts/bmiagerev.htm">growth
@@ -56,10 +72,19 @@
             age and BMI.
         </p>
         <p align="justify">
-            If the BMI for a kid lies between two values \(\text{BMI}_{\text{low}}\) and \(\text{BMI}_{\text{high}}\) and we know the percentiles for these as \(p_{\text{low}}\) and \(p_{\text{high}}\), the percentile for a given BMI can be calculated as:
-            $$
-            p = \frac{p_{\text{high}}-p_{\text{low}}}{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}} \times \text{BMI}
-            $$
+            If the BMI for a kid lies between two values \(\text{BMI}_{\text{low}}\) and \(\text{BMI}_{\text{high}}\)
+            and we know the percentiles for these as \(p_{\text{low}}\) and \(p_{\text{high}}\), the percentile for a
+            given BMI can be calculated as:
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    $$
+                    p = \frac{p_{\text{high}}-p_{\text{low}}}{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}} \times
+                    \text{BMI}
+                    $$
+                </p>
+            </div>
+        </div>
         </p>
         <h1>How weight is calculated given target BMI percentile</h1>
         <h1>How this is implemented in this website</h1>
