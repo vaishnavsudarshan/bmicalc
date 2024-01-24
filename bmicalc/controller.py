@@ -4,6 +4,20 @@ Controllers for BMI forms
 from browser import document
 import bmicalc.bmicalc
 
+def update_bmi_classification(_):
+    bmi_percentile = float(document['bmi-percentile'].value)
+    if bmi_percentile < 5:
+        document['bmi-classification'].text = 'Underweight'
+        document['bmi-classification'].attrs['class'] = 'input-group-text bg-danger text-white'
+    elif 5 <= bmi_percentile < 85:
+        document['bmi-classification'].text = 'Normal'
+        document['bmi-classification'].attrs['class'] = 'input-group-text bg-light text-dark'
+    elif 85 <= bmi_percentile < 95:
+        document['bmi-classification'].text = 'Overweight'
+        document['bmi-classification'].attrs['class'] = 'input-group-text bg-warning text-dark'
+    else:
+        document['bmi-classification'].text = 'Obese'
+        document['bmi-classification'].attrs['class'] = 'input-group-text bg-danger text-white'
 
 def update_bmi(_):
     '''
@@ -17,7 +31,7 @@ def update_bmi(_):
     bmi_percentile = bmicalc.bmicalc.calc_percentile(bmi, gender, age)
     document['bmi'].value = f'{bmi:0.2f}'
     document['bmi-percentile'].value = f'{bmi_percentile:0.2f}'
-
+    update_bmi_classification()
 
 def update_weight_from_bmi(_):
     '''
@@ -34,6 +48,7 @@ def update_weight_from_bmi(_):
     document['weight-lb'].value = f'{weight_lb}'
     document['weight-oz'].value = f'{weight_oz:0.2f}'
     document['bmi-percentile'].value = f'{bmi_percentile:0.2f}'
+    update_bmi_classification()
 
 
 def update_weight_from_bmi_pct(_):

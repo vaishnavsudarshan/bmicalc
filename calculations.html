@@ -71,20 +71,22 @@
             Next, we used a technique called <i>linear interpolation</i> to obtain the BMI percentile given the gender,
             age and BMI.
         </p>
+        <!-- https://math.preview.excalidraw.com/#json=1WlBhWooN2hZm0VZ0b2vx,56yOO6tKQLNdQY-T2PfCrg -->
         <p align="justify">
             If the BMI for a kid lies between two values \(\text{BMI}_{\text{low}}\) and \(\text{BMI}_{\text{high}}\)
             and we know the percentiles for these as \(p_{\text{low}}\) and \(p_{\text{high}}\), the percentile for a
             given BMI can be calculated as:
-        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card text-dark bg-light mb-3" style="max-width: 28rem;">
             <div class="card-body">
                 <p class="card-text">
                     $$
-                    p = \frac{p_{\text{high}}-p_{\text{low}}}{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}} \times
-                    \text{BMI}
+                    p = \left(\frac{p_{\text{high}}-p_{\text{low}}}{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}}\right) \times
+                    \left(\text{BMI} - \text{BMI}_{\text{low}}\right)
                     $$
-                </p>
+                </p>                
             </div>
         </div>
+        <img src="linear-interpolation.svg"/>
         </p>
         <h1>How weight is calculated given target BMI percentile</h1>
         <h1>How this is implemented in this website</h1>
