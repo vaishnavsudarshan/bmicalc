@@ -1,8 +1,9 @@
 '''
 Controllers for BMI forms
 '''
-from browser import document
+from browser import document, window
 import bmicalc.bmicalc
+Plotly = window.Plotly
 
 def update_bmi_classification(_):
     bmi_percentile = float(document['bmi-percentile'].value)
@@ -68,3 +69,12 @@ def update_weight_from_bmi_pct(_):
     document['weight-oz'].value = f'{weight_oz:0.2f}'
 
     document['bmi'].value = f'{bmi:0.2f}'
+
+def make_plot():
+  months, percentiles, bmi_percentiles = bmicalc.bmicalc.get_bmi_percentiles(document['gender'].value)
+  data = []
+  for percentile, bmi_percentile in zip(percentiles, bmi_percentiles):
+      data.append({"x": months, "y": bmi_percentile, "type": "scatter", "mode": "lines",  "name": "P %2d"%percentile})
+  
+  layout = {"title": "BMI Percentiles", "xaxis": {"title": "Months"}, "yaxis": {"title": "BMI Percentiles"}}
+  Plotly.newPlot('bmi-plot', data[::-1], layout);

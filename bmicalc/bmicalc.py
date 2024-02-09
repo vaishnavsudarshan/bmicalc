@@ -68,3 +68,28 @@ def calc_bmi_from_percentile(gender, age, percentile):
     m = (y2-y1)/(x2-x1)
     y = m*(percentile-x1)+y1
     return y
+
+def get_bmi_percentiles(gender):
+    months = []
+    bmi_percentiles = []
+    for _ in range(len(percentiles)-1):
+        bmi_percentiles.append([])
+
+    if gender == "boy":
+        for bmi_list in boys_percentiles:
+            for col, bmi in enumerate(bmi_list):
+                if col == 0:
+                    months.append(bmi)
+                else:
+                    bmi_percentiles[col-1].append(bmi)
+    else:
+        for bmi_list in boys_percentiles:
+            for col, bmi in enumerate(bmi_list):
+                if col == 0:
+                    months.append(bmi)
+                else:
+                    bmi_percentiles[col-1].append(bmi)
+
+    return months, percentiles[1:], bmi_percentiles
+
+
