@@ -37,6 +37,7 @@ def calc_percentile(bmi, gender, age):
             break
     for i in range(1, len(row)):
         if row[i-1] <= bmi < row[i]:
+            percentiles = row[i]
             break
     y1 = percentiles[i-1]
     y2 = percentiles[i]
