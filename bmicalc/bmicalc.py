@@ -31,22 +31,34 @@ def calc_percentile(bmi, gender, age):
         table = boys_percentiles
     else:
         table = girls_percentiles
-    for i in range(1, len(table)):
+    print(f'Age in months = {age=}')
+    for i in range(len(table)-1):
         if table[i][0] <= age < table[i+1][0]:
             row = table[i]
             break
-    for i in range(1, len(row)):
-        if row[i-1] <= bmi < row[i]:
-            percentiles = row[i]
+    print(f'Age = {row[:10]}, {bmi=}')
+    if bmi < row[1]:
+        y = percentiles[1] * bmi / row[1]
+        return y
+
+    if bmi > row[-1]:
+        return 99.99
+
+    for i in range(1, len(row)-1):
+        if row[i] <= bmi < row[i+1]:
+            print(f'{row[i]=}, {bmi=}, {row[i+1]=}')
             break
-    y1 = percentiles[i-1]
-    y2 = percentiles[i]
-    x1 = row[i-1]
-    x2 = row[i]
+    print(f'{i=}')
+    y1 = percentiles[i]
+    y2 = percentiles[i+1]
+    x1 = row[i]
+    x2 = row[i+1]
+    print(f'{x1=}, {x2=}, {y1=}, {y2=}')
+
     m = (y2-y1)/(x2-x1)
     y = m*(bmi-x1)+y1
-    if y >= 99.5:
-        y = 99.5
+ 
+    print(f'BMI Percentile, {y=}')
     return y
 
 def calc_bmi_from_percentile(gender, age, percentile):
@@ -57,13 +69,27 @@ def calc_bmi_from_percentile(gender, age, percentile):
         table = boys_percentiles
     else:
         table = girls_percentiles
-    for i in range(1, len(table)):
+    for i in range(len(table)-1):
         if table[i][0] <= age < table[i+1][0]:
             row = table[i]
             break
-    for i in range(1, len(percentiles)):
-        if percentiles[i-1] <= percentile < percentiles[i]:
+    if 0 <= percentile < percentiles[1]:
+        y = percentile*row[1]/percentiles[1]
+        return y
+
+    if percentile >= percentiles[-1]:
+        y1 = row[-2]
+        y2 = row[-1]
+        x1 = percentiles[-2]
+        x2 = percentiles[-1]
+        m = (y2-y1)/(x2-x1)
+        y = m*(percentile-x1)+y1
+        return y
+
+    for i in range(1, len(percentiles)-1):
+        if percentiles[i] <= percentile < percentiles[i+1]:
             break
+            
     y1 = row[i]
     y2 = row[i+1]
     x1 = percentiles[i]

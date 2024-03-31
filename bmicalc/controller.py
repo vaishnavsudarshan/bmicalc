@@ -5,8 +5,7 @@ from browser import document, window
 import bmicalc.bmicalc
 Plotly = window.Plotly
 
-def update_bmi_classification(_):
-    bmi_percentile = float(document['bmi-percentile'].value)
+def update_bmi_classification(bmi_percentile):
     if bmi_percentile < 5:
         document['bmi-classification'].text = 'Underweight'
         document['bmi-classification'].attrs['class'] = 'input-group-text bg-danger text-white'
@@ -20,6 +19,11 @@ def update_bmi_classification(_):
         document['bmi-classification'].text = 'Obese'
         document['bmi-classification'].attrs['class'] = 'input-group-text bg-danger text-white'
 
+def update_growth_chart(age, bmi):
+    print(f'Updating growth chart: {document["bmi-plot"]=}, {age=}, {bmi=}')
+    Plotly.restyle("bmi-plot", {"x": [[age]], "y": [[bmi]]}, [0])
+
+
 def update_bmi(_):
     '''
     Update BMI and BMI percentile when weight changes
@@ -32,7 +36,8 @@ def update_bmi(_):
     bmi_percentile = bmicalc.bmicalc.calc_percentile(bmi, gender, age)
     document['bmi'].value = f'{bmi:0.2f}'
     document['bmi-percentile'].value = f'{bmi_percentile:0.2f}'
-    update_bmi_classification()
+    update_bmi_classification(bmi_percentile)
+    update_growth_chart(age, bmi)
 
 def update_weight_from_bmi(_):
     '''
@@ -49,7 +54,8 @@ def update_weight_from_bmi(_):
     document['weight-lb'].value = f'{weight_lb}'
     document['weight-oz'].value = f'{weight_oz:0.2f}'
     document['bmi-percentile'].value = f'{bmi_percentile:0.2f}'
-    update_bmi_classification()
+    update_bmi_classification(bmi_percentile)
+    update_growth_chart(age, bmi)
 
 
 def update_weight_from_bmi_pct(_):
@@ -69,6 +75,9 @@ def update_weight_from_bmi_pct(_):
     document['weight-oz'].value = f'{weight_oz:0.2f}'
 
     document['bmi'].value = f'{bmi:0.2f}'
+    update_bmi_classification(bmi_percentile)
+    update_growth_chart(age, bmi)
+
 
 def make_plot():
   months, percentiles, bmi_percentiles = bmicalc.bmicalc.get_bmi_percentiles(document['gender'].value)
@@ -76,5 +85,13 @@ def make_plot():
   for percentile, bmi_percentile in zip(percentiles, bmi_percentiles):
       data.append({"x": months, "y": bmi_percentile, "type": "scatter", "mode": "lines",  "name": "P %2d"%percentile})
   
-  layout = {"title": "BMI Percentiles", "xaxis": {"title": "Months"}, "yaxis": {"title": "BMI Percentiles"}}
-  Plotly.newPlot('bmi-plot', data[::-1], layout);
+  age = float(document['age-years'].value)*12 + float(document['age-months'].value)
+  bmi = float(document['bmi'].value)
+  data.append({"x": [age], "y": [bmi], "type": "scatter", "mode": "markers", "marker": {"size":15}, "name": "Your BMI"})
+
+  layout = {"title": f"BMI distribution for {document['gender'].value}s", "xaxis": {"title": "Months"}, "yaxis": {"title": "BMI"}}
+  Plotly.newPlot('bmi-plot', data[::-1], layout)
+
+def redraw_plot(_):
+    make_plot()
+  
