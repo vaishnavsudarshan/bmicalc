@@ -45,6 +45,8 @@ def calc_percentile(bmi, gender, age):
     x2 = row[i]
     m = (y2-y1)/(x2-x1)
     y = m*(bmi-x1)+y1
+    if y >= 99.5:
+        y = 99.5
     return y
 
 def calc_bmi_from_percentile(gender, age, percentile):
