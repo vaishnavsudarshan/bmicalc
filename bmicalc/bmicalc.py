@@ -42,7 +42,9 @@ def calc_percentile(bmi, gender, age):
         return y
 
     if bmi > row[-1]:
-        
+        y = (2.99*bmi - 99.99*row[-1] + 3880)/(40-row[-1])
+        return y
+    
 
     for i in range(1, len(row)-1):
         if row[i] <= bmi < row[i+1]:
