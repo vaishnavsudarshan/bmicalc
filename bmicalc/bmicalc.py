@@ -40,12 +40,14 @@ def calc_percentile(bmi, gender, age):
     if bmi < row[1]:
         y = percentiles[1] * bmi / row[1]
         return y
+        
+    if bmi >= 40:
+        return 99.99
 
     if bmi > row[-1] and bmi < 40:
         y = (2.99*bmi - 99.99*row[-1] + 3880)/(40-row[-1])
         return y
-    if bmi >= 40:
-        return 99.99
+   
 
     for i in range(1, len(row)-1):
         if row[i] <= bmi < row[i+1]:
