@@ -91,12 +91,12 @@
         <h1>How weight is calculated given target BMI percentile</h1>
         <p align="justify">
             Given a target BMI percentile, \(p_{\text{target}}\), we can also use linear interpolation to calculate the BMI value. Suppose \(p_{\text{target}}\) lies between two percentile values in the CDC grow charts, \(p_{\text{low}}\) and \(p_{\text{high}}\). If the BMI value for \(p_{\text{low}}\) in \(\text{BMI}_{\text{low}}\) and the BMI value for \(p_{\text{high}}\) is \(\text{BMI}_{\text{high}}\), then the BMI value for \(p_{\text{target}}\) can be calculated as:
-            <div class="card text-dark bg-light mb-3" style="max-width: 30rem;">
+            <div class="card text-dark bg-light mb-3" style="max-width: 32rem;">
                 <div class="card-body">
                     <p class="card-text">
                         $$
-                        BMI = {\text{BMI}_{\text{low}} + \left(\frac{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}}{p_{\text{high}}-p_{\text{low}}}\right) \times
-                        \left(p - p_{\text{low}}\right)
+                        \text{BMI} = \text{BMI}_{\text{low}} + \left(\frac{\text{BMI}_{\text{high}}-\text{BMI}_{\text{low}}}{p_{\text{high}}-p_{\text{low}}}\right) \times
+                        \left(p_{\text{target}} - p_{\text{low}}\right)
                         $$
                     </p>                
                 </div>
