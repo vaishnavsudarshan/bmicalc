@@ -78,6 +78,10 @@ def calc_bmi_from_percentile(gender, age, percentile):
         if table[i][0] <= age < table[i+1][0]:
             row = table[i]
             break
+    if percentile <= 0.01:
+        percentile = 0.01
+    if percentile >= 99.99:
+        percentile = 99.99
     if 0 <= percentile < percentiles[1]:
         y = percentile*row[1]/percentiles[1]
         return y
