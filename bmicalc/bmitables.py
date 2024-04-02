@@ -1,7 +1,7 @@
 # From: https://www.cdc.gov/growthcharts/html_charts/bmiagerev.htm
 
 percentiles = [0, 3, 5, 10, 25, 50, 75, 85, 90, 95, 97]
-
+#The 0 is a dummy variable, it represents the age. 
 boys_percentiles = [
     [24, 14.52095, 14.73732, 15.09033, 15.74164, 16.57503,
         17.55719, 18.16219, 18.60948, 19.33801, 19.85986],
